@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Viagem</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4caf50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Controle de Viagem para Porto Seguro - Reinião dos Pombos</h1>
+
+<form id="paymentForm">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" required>
+
+    <label for="paymentAmount">Valor do Pagamento (R$):</label>
+    <input type="number" id="paymentAmount" required>
+
+    <label for="paymentDate">Data do Pagamento:</label>
+    <input type="date" id="paymentDate" required>
+
+    <button type="button" onclick="addPayment()">Confirmar Pagamento</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Valor do Pagamento</th>
+            <th>Data do Pagamento</th>
+        </tr>
+    </thead>
+    <tbody id="paymentTableBody">
+        <!-- Os dados serão adicionados dinamicamente aqui -->
+    </tbody>
+</table>
+
+<script>
+    function addPayment() {
+        var name = document.getElementById("name").value;
+        var paymentAmount = document.getElementById("paymentAmount").value;
+        var paymentDate = document.getElementById("paymentDate").value;
+
+        // Validar os dados antes de adicioná-los à tabela
+
+        var tableBody = document.getElementById("paymentTableBody");
+        var newRow = tableBody.insertRow(tableBody.rows.length);
+
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+
+        cell1.innerHTML = name;
+        cell2.innerHTML = "R$ " + paymentAmount;
+        cell3.innerHTML = paymentDate;
+
+        // Limpar o formulário após adicionar o pagamento
+        document.getElementById("paymentForm").reset();
+    }
+</script>
+
+</body>
+</html>
